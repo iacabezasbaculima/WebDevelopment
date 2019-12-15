@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fetch JSON data from REST API</title>
+</head>
+
+<body>
+    <h1>WHERE IS THE INTERNATIONAL SPACE STATION?</h1>
+    <h2>LATITUDE: <span id="lat"></span>°</h2>
+    <h2>LONGITUDE: <span id="lon"></span>°</h2>
+
+    <script>
+
+        // URL to REST API endpoint
+        const api_url = 'https://api.wheretheiss.at/v1/satellites/25544';
+
+        // declare async function to fetch data
+        async function GetData() {
+            const response = await fetch(api_url);
+            const data = await response.json();
+            // Print latitude and longitude by accesing JSON data
+            //console.log(data.latitude);
+            //console.log(data.longitude);
+
+            // Get and store latitude and longitude from JSON data
+            const { latitude, longitude } = data;
+            console.log(latitude);
+            console.log(longitude);
+
+            // Append values to html document
+            document.getElementById('lat').textContent = latitude.toFixed(2);
+            document.getElementById('lon').textContent = longitude.toFixed(2);
+        };
+
+        // Call async function
+        GetData();
+
+        // Call async function every 1000 ms
+        setInterval(GetData, 1000);
+
+    </script>
+</body>
+
+</html>
