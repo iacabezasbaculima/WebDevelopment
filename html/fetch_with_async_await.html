@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Fetch using async and await</title>
 </head>
 
 <body>
@@ -21,10 +21,11 @@
             console.log('IMAGE_FETCH_ERROR!');
             console.log(error);
         });
-
+        
         // Declare async function to fetch image
-        async function catchImage(){
+        async function catchImage ( ) {
             const response = await fetch('image.jpg');
+            // blob: unspecified data in raw binary
             const blob = await response.blob();
             document.getElementById('image').src = URL.createObjectURL(blob);
         };
