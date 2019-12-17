@@ -1,0 +1,21 @@
+{
+  "name": "nodejs_app_route_http_post",
+  "version": "1.0.0",
+  "description": "HTTP Post request with fetch()",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node.js",
+    "route",
+    "post",
+    "http",
+    "tutorial"
+  ],
+  "author": "Isaac Andres Cabezas Baculima",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

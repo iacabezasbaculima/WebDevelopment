@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTTP POST request with fetch()</title>
+</head>
+
+<body>
+    <h1>HTTP POST request with fetch()</h1>
+
+    <!--Display latitude and longitude-->
+    <p>
+        latitude: <span id="lat">°</span><br>
+        longitude: <span id="lng">°</span>
+    </p>
+    <!--Press this button to get your geolocation and POST to node.js server and expect a response with the data received-->
+    <button id="mybutton" onclick="GetGeolocation()">GEOLOCATION BUTTON </button>
+
+    <script>
+        function GetGeolocation() {
+            if ('geolocation' in navigator) {
+                /* geolocation is available */
+                console.log('geolocation available.');
+                navigator.geolocation.getCurrentPosition(
+                    async position => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        document.getElementById('lat').textContent = lat;
+                        document.getElementById('lng').textContent = lng;
+
+                        // POST request data
+                        const data = { lat, lng };
+                        // Set options
+                        const options = {
+                            method: 'POST',
+                            body: JSON.stringify(data),
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        };
+                        // POST request to node.js server, expect a response
+                        const response = await fetch('/api', options);
+                        // Convert response to JSON
+                        const response_data = await response.json();
+                        // Log response data
+                        console.log(response_data);
+
+                    });
+            } else {
+                /* gelocation is not available*/
+                console.log('geolocation NOT available.');
+            }
+        }
+    </script>
+</body>
+
+</html>
