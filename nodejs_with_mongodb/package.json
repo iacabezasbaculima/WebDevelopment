@@ -1,0 +1,24 @@
+{
+  "name": "nodejs_with_mongodb",
+  "version": "1.0.0",
+  "description": "Node.js app with MongoDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "#"
+  },
+  "keywords": [
+    "node.js",
+    "mongodb",
+    "tutorial"
+  ],
+  "author": "Isaac Andres Cabezas Baculima",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.4.0"
+  }
+}
